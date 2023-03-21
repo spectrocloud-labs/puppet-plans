@@ -1,4 +1,4 @@
-plan spectro_hybrid(){
+plan spectro_postgres(){
   apply_prep(localhost)
   apply(localhost) {
 
