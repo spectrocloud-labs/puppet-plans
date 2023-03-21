@@ -8,8 +8,8 @@ plan spectro_postgres(){
     }
 
     postgresql::server::db { 'db':
-      user     => 'mydatabaseuser',
-      password => postgresql::postgresql_password('mydatabaseuser', 'mypassword'),
+      user     => 'postgres',
+      password => postgresql::postgresql_password('postgres', ''),
     }
   }
 
