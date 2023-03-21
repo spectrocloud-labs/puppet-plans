@@ -2,17 +2,13 @@ plan spectro_mysql(){
   apply_prep(localhost)
   apply(localhost) {
 
-    class { 'mysql::server':
-      root_password           => '',
-      remove_default_accounts => false,
-      restart                 => true,
+    class { 'postgresql::server':
+      postgres_password => '',
     }
 
-    mysql::db { 'db':
-      user     => 'postgres',
-      password => '',
-      host     => 'localhost',
-      grant    => ['SELECT', 'UPDATE'],
+    postgresql::server::db { 'db':
+      user     => 'mydatabaseuser',
+      password => postgresql::postgresql_password('mydatabaseuser', 'mypassword'),
     }
   }
 
