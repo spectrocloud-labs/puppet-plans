@@ -1,4 +1,4 @@
-plan spectro_mysql(){
+plan spectro_hybrid(){
   apply_prep(localhost)
   apply(localhost) {
 
