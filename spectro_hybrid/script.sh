@@ -12,5 +12,5 @@ curl "https://raw.githubusercontent.com/spectrocloud-labs/puppet-plans/main/spec
 cd /root/spectro_install
 bolt plan run spectro_mysql
 wget https://raw.githubusercontent.com/dockersamples/wordsmith/main/db/words.sql -O /tmp/words.sql
-mysql -p db < /tmp/words.sql
+mysql db < /tmp/words.sql
 systemctl start qemu-guest-agent
