@@ -1,5 +1,5 @@
 #!/bin/bash
-wget https://apt.puppet.com/puppet-tools-release-focal.deb /tmp/puppet-tools-release-focal.deb
+wget https://apt.puppet.com/puppet-tools-release-focal.deb -O /tmp/puppet-tools-release-focal.deb
 dpkg -i /tmp/puppet-tools-release-focal.deb
 apt-get update
 apt-get install -y puppet-bolt
