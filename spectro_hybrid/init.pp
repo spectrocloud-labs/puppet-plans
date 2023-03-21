@@ -2,9 +2,7 @@ plan spectro_postgres(){
   apply_prep(localhost)
   apply(localhost) {
 
-    class { 'postgresql::server':
-      postgres_password => '',
-    }
+    class { 'postgresql::server': }
 
     postgresql::server::db { 'db':
       user     => 'mydatabaseuser',
