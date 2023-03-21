@@ -2,7 +2,9 @@ plan spectro_postgres(){
   apply_prep(localhost)
   apply(localhost) {
 
-    class { 'postgresql::server': }
+    class { 'postgresql::server':
+      listen_addresses => '0.0.0.0',
+    }
 
     postgresql::server::db { 'db':
       user     => 'mydatabaseuser',
