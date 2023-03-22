@@ -7,6 +7,11 @@ plan spectro_postgres(){
       ensure => '10.0',
       postgres_password => '',
     }
+
+    postgresql::server::db { 'postgres':
+      user     => 'postgres',
+      password => postgresql::postgresql_password('postgres', ''),
+    }
   }
 
 }
