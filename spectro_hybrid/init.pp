@@ -12,6 +12,10 @@ plan spectro_postgres(){
       user     => 'postgres',
       password => postgresql::postgresql_password('postgres', ''),
     }
+
+    package { 'postgresql-client':
+      ensure => 'installed',
+    }
   }
 
 }
