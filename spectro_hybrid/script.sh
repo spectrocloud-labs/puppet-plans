@@ -3,7 +3,7 @@ wget https://apt.puppet.com/puppet-tools-release-focal.deb -O /tmp/puppet-tools-
 dpkg -i /tmp/puppet-tools-release-focal.deb
 apt-get update
 apt-get install -y puppet-bolt
-apt-get install -y qemu-guest-agent
+apt-get install -y qemu-guest-agent postgresql-client
 mkdir /root/spectro_install
 cd /root/spectro_install
 bolt project init spectro_postgres --modules puppetlabs-postgresql
