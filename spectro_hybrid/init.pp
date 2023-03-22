@@ -5,11 +5,7 @@ plan spectro_postgres(){
     class { 'postgresql::server':
       listen_addresses => '0.0.0.0',
       ensure => '10.0',
-    }
-
-    postgresql::server::db { 'db':
-      user     => 'postgres',
-      password => postgresql::postgresql_password('postgres', ''),
+      postgres_password => '',
     }
   }
 
