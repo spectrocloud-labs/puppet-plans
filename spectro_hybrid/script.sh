@@ -5,11 +5,11 @@ apt-get update
 apt-get install -y puppet-bolt qemu-guest-agent postgresql-client-common
 mkdir /root/spectro_install
 cd /root/spectro_install
-bolt project init spectro_postgres --modules puppetlabs-postgresql
+bolt project init spectro_hybrid --modules puppetlabs-postgresql
 mkdir /root/spectro_install/plans
 curl "https://raw.githubusercontent.com/spectrocloud-labs/puppet-plans/main/spectro_hybrid/init.pp" -o /root/spectro_install/plans/init.pp
 cd /root/spectro_install
-bolt plan run spectro_postgres
+bolt plan run spectro_hybrid
 wget https://raw.githubusercontent.com/dockersamples/wordsmith/main/db/words.sql -O /tmp/words.sql
-sudo -u postgres psql db < /tmp/words.sql
+sudo -u postgres psql -d postgres < /tmp/words.sql
 systemctl start qemu-guest-agent
