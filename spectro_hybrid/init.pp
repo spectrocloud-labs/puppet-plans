@@ -8,7 +8,7 @@ plan spectro_postgres(){
     }
 
     postgresql::server::pg_hba_rule { 'allow wordsmith api pods to access db database':
-      description => 'Open up PostgreSQL for access from pod network',
+      description => 'Open up trusted PostgreSQL for access from pod network',
       type        => 'host',
       database    => 'postgres',
       user        => 'postgres',
