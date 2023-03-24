@@ -8,7 +8,7 @@ plan spectro_postgres(){
       ip_mask_allow_all_users    => '0.0.0.0/0',  # allow all users from anywhere
     }
 
-    postgresql::server::db { 'postgres':
+    postgresql::server::db { 'db':
       user     => 'dummy_user',                   # app will be connecting with the builtin Postgres user
       password => 'dummy_password',
     }
