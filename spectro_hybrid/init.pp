@@ -1,4 +1,4 @@
-plan spectro_postgres(){
+plan spectro_hybrid(){
   apply_prep(localhost)
   apply(localhost) {
 
@@ -17,9 +17,6 @@ plan spectro_postgres(){
       order       => 5,
     }
 
-    postgresql::server::db { 'postgres':
-      user     => 'dummy_user',                   # app will be connecting with the builtin Postgres user
-    }
   }
 
 }
