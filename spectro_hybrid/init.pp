@@ -6,21 +6,20 @@ plan spectro_postgres(){
       listen_addresses           => '0.0.0.0',
       ip_mask_deny_postgres_user => '0.0.0.0/32', # don't deny from anywhere
       ip_mask_allow_all_users    => '0.0.0.0/0',  # allow all users from anywhere
-      #password_encryption        => 'md5',        # need to switch this away from scram-sha-256
     }
 
     postgresql::server::pg_hba_rule { 'allow wordsmith api pods to access db database':
-      description => 'Open up PostgreSQL for access from anywhere',
+      description => 'Open up PostgreSQL for access from pod network',
       type        => 'host',
-      database    => 'db',
+      database    => 'postgres',
       user        => 'postgres',
-      address     => '0.0.0.0/0',
+      address     => '192.168.0.0/16',
       auth_method => 'trust',
+      order       => 5,
     }
 
-    postgresql::server::db { 'db':
+    postgresql::server::db { 'postgres':
       user     => 'dummy_user',                   # app will be connecting with the builtin Postgres user
-      password => 'dummy_password',
     }
   }
 
