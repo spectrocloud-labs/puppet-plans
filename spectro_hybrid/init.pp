@@ -7,8 +7,8 @@ plan spectro_postgres(){
     }
 
     postgresql::server::db { 'postgres':
-      user     => 'postgres',
-      password => postgresql::postgresql_password('postgres', ''),
+      ip_mask_deny_postgres_user => '0.0.0.0/32', # don't deny from anywhere
+      ip_mask_allow_all_users    => '0.0.0.0/0',  # allow all users from anywhere
     }
   }
 
