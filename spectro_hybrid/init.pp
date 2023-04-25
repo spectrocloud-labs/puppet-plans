@@ -7,7 +7,7 @@ plan spectro_hybrid(){
       ip_mask_deny_postgres_user => '0.0.0.0/32', # don't deny from anywhere
     }
 
-    postgresql::server::pg_hba_rule { 'allow wordsmith api pods to access db database':
+    postgresql::server::pg_hba_rule { 'allow wordsmith api pods 1 to access db database':
       description => 'Open up trusted PostgreSQL for access from pod network',
       type        => 'host',
       database    => 'postgres',
@@ -15,6 +15,16 @@ plan spectro_hybrid(){
       address     => '192.168.0.0/16',
       auth_method => 'trust',
       order       => 5,
+    }
+    
+    postgresql::server::pg_hba_rule { 'allow wordsmith api pods 2 to access db database':
+      description => 'Open up trusted PostgreSQL for access from pod network',
+      type        => 'host',
+      database    => 'postgres',
+      user        => 'postgres',
+      address     => '100.64.0.0/16',
+      auth_method => 'trust',
+      order       => 6,
     }
 
   }
